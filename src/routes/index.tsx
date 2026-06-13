@@ -15,7 +15,6 @@ import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
 } from "@/components/ui/accordion";
 import { toast } from "sonner";
-import logoAsset from "@/assets/trustforce-logo.png.asset.json";
 import heroImg from "@/assets/hero-consultation.jpg";
 import aboutImg from "@/assets/about-documents.jpg";
 import founderImg from "@/assets/founder-office.jpg";
@@ -40,7 +39,7 @@ export const Route = createFileRoute("/")({
           name: "TrustForce Advisors",
           description: "Fiduciary, conservatorship, guardianship and trust support services.",
           telephone: "(629) 258-7878",
-          email: "hello@TheTrustForce.com",
+          email: "Hello@TheTrustForce.com",
           url: "https://TheTrustForce.com",
           address: {
             "@type": "PostalAddress",
@@ -127,16 +126,16 @@ const faqs = [
   { q: "Do you offer virtual consultations?", a: "Yes. TrustForce Advisors may offer phone or virtual consultations depending on the client's needs and location." },
   { q: "Where is TrustForce Advisors located?", a: "TrustForce Advisors is located at 442 S Martin Luther King Blvd, Suite B, Greenville, MS 38703." },
   { q: "What areas do you serve?", a: "TrustForce Advisors serves Mississippi and surrounding areas." },
-  { q: "How do I get started?", a: "Call (629) 258-7878, email hello@TheTrustForce.com, or complete the consultation form on TheTrustForce.com." },
+  { q: "How do I get started?", a: "Call (629) 258-7878, email Hello@TheTrustForce.com, or complete the consultation form on TheTrustForce.com." },
 ];
 
 const resources = [
-  { icon: ClipboardList, title: "Conservatorship Checklist", text: "A helpful guide for organizing records and responsibilities." },
-  { icon: UserCheck, title: "Guardianship Basics", text: "An overview of common guardian responsibilities and documentation needs." },
-  { icon: FileText, title: "Trustee Recordkeeping Guide", text: "A guide for trustees who need to organize records, communications, and financial information." },
-  { icon: Award, title: "Veteran Fiduciary Support Guide", text: "A resource for veterans and families managing fiduciary-related responsibilities." },
-  { icon: Gavel, title: "Court Accounting Preparation Guide", text: "A guide for preparing organized financial records and summaries." },
-  { icon: Library, title: "Fiduciary Glossary", text: "Simple definitions of common fiduciary, trust, conservatorship, and guardianship terms." },
+  { icon: ClipboardList, title: "Conservatorship Checklist", text: "A helpful guide for organizing records and responsibilities.", href: "/resources/conservatorship-checklist.pdf" },
+  { icon: UserCheck, title: "Guardianship Basics", text: "An overview of common guardian responsibilities and documentation needs.", href: "/resources/guardianship-basics.pdf" },
+  { icon: FileText, title: "Trustee Recordkeeping Guide", text: "A guide for trustees who need to organize records, communications, and financial information.", href: "/resources/trustee-recordkeeping-guide.pdf" },
+  { icon: Award, title: "Veteran Fiduciary Support Guide", text: "A resource for veterans and families managing fiduciary-related responsibilities.", href: "/resources/veteran-fiduciary-support-guide.pdf" },
+  { icon: Gavel, title: "Court Accounting Preparation Guide", text: "A guide for preparing organized financial records and summaries.", href: "/resources/court-accounting-preparation-guide.pdf" },
+  { icon: Library, title: "Fiduciary Glossary", text: "Simple definitions of common fiduciary, trust, conservatorship, and guardianship terms.", href: "/resources/fiduciary-glossary.pdf" },
 ];
 
 const testimonials = [
@@ -173,7 +172,7 @@ function Header() {
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 md:px-6">
         <a href="#top" className="flex items-center gap-3">
-          <img src={logoAsset.url} alt="TrustForce Advisors logo" className="h-12 w-auto" width={48} height={48} />
+          <img src="/trustforce-logo.png" alt="TrustForce Advisors logo" className="h-12 w-auto" width={72} height={48} />
           <div className="hidden sm:block leading-tight">
             <div className="font-serif text-lg font-semibold text-primary">TrustForce Advisors</div>
             <div className="text-[10px] uppercase tracking-[0.18em] text-gold">Fiduciary · Conservatorship · Guardianship</div>
@@ -225,25 +224,25 @@ function Hero() {
       <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
       <div className="absolute inset-0 -z-10 opacity-20 bg-[radial-gradient(ellipse_at_top_right,oklch(0.76_0.13_80/0.5),transparent_60%)]" />
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 md:px-6 md:py-28 lg:grid-cols-2 lg:items-center">
-        <div className="text-primary-foreground">
+        <div className="text-primary">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-gold">
             <Shield className="h-3.5 w-3.5" /> Mississippi Fiduciary Advisors
           </div>
-          <h1 className="mt-6 font-serif text-4xl font-semibold leading-[1.05] sm:text-5xl lg:text-6xl">
+          <h1 className="mt-6 font-serif text-4xl font-semibold leading-[1.05] text-primary sm:text-5xl lg:text-6xl">
             Trusted Fiduciary Support <span className="text-gold">When Families Need It Most</span>
           </h1>
-          <p className="mt-6 max-w-xl text-lg text-primary-foreground/85 leading-relaxed">
+          <p className="mt-6 max-w-xl text-lg font-medium leading-relaxed text-primary">
             TrustForce Advisors helps individuals, families, veterans, and court-appointed decision-makers manage fiduciary responsibilities with professionalism, care, and accountability.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-gold/90 font-semibold">
               <a href="#contact">Schedule a Consultation <ArrowRight className="ml-1 h-4 w-4" /></a>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white/30 bg-transparent text-primary-foreground hover:bg-white/10 hover:text-primary-foreground">
-              <a href="#services">Request Information</a>
+            <Button asChild size="lg" variant="outline" className="border-white/40 bg-white/90 text-primary hover:bg-white hover:text-primary">
+              <a href="#services">Explore Our Services</a>
             </Button>
           </div>
-          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-primary-foreground/80">
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm font-medium text-primary">
             <span className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-gold" /> Greenville, MS</span>
             <span className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-gold" /> Veteran-Friendly</span>
             <span className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-gold" /> Confidential & Ethical</span>
@@ -327,7 +326,7 @@ function Founder() {
         <div className="lg:col-span-2 relative">
           <img src={founderImg} alt="TrustForce Advisors professional office" width={1280} height={960} loading="lazy" className="w-full rounded-2xl object-cover aspect-square shadow-[var(--shadow-elegant)]" />
           <div className="absolute top-4 left-4 rounded-md bg-background/90 px-3 py-2 text-xs font-semibold text-primary uppercase tracking-wider">
-            <img src={logoAsset.url} alt="" className="inline h-6 w-auto mr-2 align-middle" />Founder
+            <img src="/trustforce-logo.png" alt="" className="inline h-6 w-auto mr-2 align-middle" />Founder
           </div>
         </div>
         <div className="lg:col-span-3">
@@ -362,10 +361,10 @@ function WhoWeHelp() {
           {whoWeHelp.map(({ icon: Icon, title, text }) => (
             <Card key={title} className="group border-border bg-background transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-card)] hover:border-gold/40">
               <CardContent className="p-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary text-gold transition-colors group-hover:bg-gold group-hover:text-primary">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-primary text-gold transition-colors group-hover:bg-gold group-hover:text-primary">
                   <Icon className="h-6 w-6" />
                 </div>
-                <h3 className="mt-5 font-serif text-xl font-semibold text-primary">{title}</h3>
+                <h3 className="mt-5 text-center font-serif text-xl font-semibold text-primary">{title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{text}</p>
               </CardContent>
             </Card>
@@ -381,11 +380,11 @@ function Services() {
     <section id="services" className="bg-secondary py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <SectionHeading eyebrow="Services" title="Professional Fiduciary Services" sub="Comprehensive support across conservatorship, guardianship, trusts, estates, and recordkeeping." />
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-          {services.map(({ icon: Icon, title, text }, i) => (
-            <Card key={title} className={`relative overflow-hidden border-border bg-background ${i === 0 || i === 6 ? "xl:col-span-2" : ""}`}>
+        <div className="mt-14 grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          {services.map(({ icon: Icon, title, text }) => (
+            <Card key={title} className="group relative h-full overflow-hidden border-border bg-background">
               <div className="absolute top-0 left-0 h-1 w-full bg-gold opacity-0 transition-opacity group-hover:opacity-100" />
-              <CardContent className="p-6">
+              <CardContent className="h-full p-6">
                 <div className="flex items-start gap-4">
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-gold/15 text-primary">
                     <Icon className="h-5 w-5" />
@@ -475,9 +474,9 @@ function Resources() {
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <SectionHeading eyebrow="Resource Center" title="Guides & Resources" sub="Helpful resources for fiduciaries, families, and professionals. Coming soon." />
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {resources.map(({ icon: Icon, title, text }) => (
+          {resources.map(({ icon: Icon, title, text, href }) => (
             <Card key={title} className="group border-border bg-background transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-card)]">
-              <CardContent className="p-6">
+              <CardContent className="flex h-full flex-col p-6">
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary text-gold">
                     <Icon className="h-5 w-5" />
@@ -487,6 +486,14 @@ function Resources() {
                 <h3 className="mt-5 font-serif text-lg font-semibold text-primary">{title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{text}</p>
                 <div className="mt-4 text-xs font-semibold uppercase tracking-wider text-gold">Coming Soon</div>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-5 inline-flex items-center gap-2 self-start text-sm font-semibold text-primary transition-colors hover:text-gold"
+                >
+                  View Guide Preview <ArrowRight className="h-4 w-4" />
+                </a>
               </CardContent>
             </Card>
           ))}
@@ -529,9 +536,9 @@ function Contact() {
         <SectionHeading eyebrow="Get in Touch" title="Contact TrustForce Advisors" sub="Have questions about fiduciary support, conservatorship, guardianship, trust administration, or recordkeeping? Contact TrustForce Advisors to start the conversation." />
         <div className="mt-14 grid gap-10 lg:grid-cols-5">
           <div className="lg:col-span-2 space-y-6">
-            <ContactItem icon={Phone} label="Phone" value="(629) 258-7878" href="tel:6292587878" />
-            <ContactItem icon={Mail} label="Email" value="hello@TheTrustForce.com" href="mailto:hello@TheTrustForce.com" />
-            <ContactItem icon={MapPin} label="Office" value="442 S Martin Luther King Blvd, Suite B, Greenville, MS 38703" />
+            <ContactItem icon={Phone} label="Phone" value="(629) 258-7878" secondary="(629) 25-TRUST" href="tel:6292587878" />
+            <ContactItem icon={Mail} label="Email" value="Hello@TheTrustForce.com" href="mailto:Hello@TheTrustForce.com" />
+            <ContactItem icon={MapPin} label="Office" value={<>442 S Martin Luther King Blvd, Suite B<br />Greenville, MS 38703</>} />
             <ContactItem icon={Building2} label="Service Area" value="Mississippi and surrounding areas" />
             <div className="rounded-xl border border-border bg-background p-6">
               <div className="flex items-center gap-2 text-primary">
@@ -591,7 +598,7 @@ function Field({ id, label, type = "text", required, placeholder }: { id: string
   );
 }
 
-function ContactItem({ icon: Icon, label, value, href }: { icon: typeof Phone; label: string; value: string; href?: string }) {
+function ContactItem({ icon: Icon, label, value, secondary, href }: { icon: typeof Phone; label: string; value: React.ReactNode; secondary?: string; href?: string }) {
   const inner = (
     <div className="flex gap-4">
       <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-primary text-gold">
@@ -600,6 +607,7 @@ function ContactItem({ icon: Icon, label, value, href }: { icon: typeof Phone; l
       <div>
         <div className="text-xs font-semibold uppercase tracking-wider text-gold">{label}</div>
         <div className="mt-1 text-base font-medium text-primary">{value}</div>
+        {secondary && <div className="mt-1 text-sm font-bold uppercase tracking-[0.12em] text-gold">{secondary}</div>}
       </div>
     </div>
   );
@@ -613,8 +621,12 @@ function Footer() {
         <div className="grid gap-10 py-16 md:grid-cols-4">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3">
-              <div className="rounded-md bg-white p-1.5">
-                <img src={logoAsset.url} alt="TrustForce Advisors" className="h-12 w-auto" />
+              <div>
+                <img
+                  src="/trustforce-logo.png"
+                  alt="TrustForce Advisors"
+                  className="h-12 w-auto [filter:brightness(0)_saturate(100%)_invert(72%)_sepia(56%)_saturate(673%)_hue-rotate(358deg)_brightness(91%)_contrast(86%)]"
+                />
               </div>
               <div>
                 <div className="font-serif text-xl font-semibold">TrustForce Advisors</div>
@@ -636,8 +648,8 @@ function Footer() {
             <h4 className="font-serif text-base font-semibold text-gold">Contact</h4>
             <ul className="mt-4 space-y-3 text-sm text-primary-foreground/80">
               <li className="flex gap-2"><MapPin className="h-4 w-4 shrink-0 text-gold mt-0.5" /> 442 S Martin Luther King Blvd, Suite B, Greenville, MS 38703</li>
-              <li className="flex gap-2"><Phone className="h-4 w-4 shrink-0 text-gold mt-0.5" /><a href="tel:6292587878">(629) 258-7878</a></li>
-              <li className="flex gap-2"><Mail className="h-4 w-4 shrink-0 text-gold mt-0.5" /><a href="mailto:hello@TheTrustForce.com">hello@TheTrustForce.com</a></li>
+              <li className="flex gap-2"><Phone className="h-4 w-4 shrink-0 text-gold mt-0.5" /><a href="tel:6292587878">(629) 258-7878 · (629) 25-TRUST</a></li>
+              <li className="flex gap-2"><Mail className="h-4 w-4 shrink-0 text-gold mt-0.5" /><a href="mailto:Hello@TheTrustForce.com">Hello@TheTrustForce.com</a></li>
               <li className="flex gap-2"><Scale className="h-4 w-4 shrink-0 text-gold mt-0.5" /> TheTrustForce.com</li>
             </ul>
           </div>
@@ -658,10 +670,10 @@ function Footer() {
           <div className="mt-5 flex flex-col items-start justify-between gap-4 text-xs text-primary-foreground/70 sm:flex-row sm:items-center">
             <p>© 2026 TrustForce Advisors. All rights reserved.</p>
             <div className="flex flex-wrap gap-x-5 gap-y-2">
-              <a href="#" className="hover:text-gold">Privacy Policy</a>
-              <a href="#" className="hover:text-gold">Terms of Use</a>
-              <a href="#" className="hover:text-gold">Accessibility Statement</a>
-              <a href="#" className="hover:text-gold">Disclaimer</a>
+              <a href="/privacy-policy" className="hover:text-gold">Privacy Policy</a>
+              <a href="/terms-of-use" className="hover:text-gold">Terms of Use</a>
+              <a href="/accessibility" className="hover:text-gold">Accessibility Statement</a>
+              <a href="/disclaimer" className="hover:text-gold">Disclaimer</a>
             </div>
           </div>
         </div>
