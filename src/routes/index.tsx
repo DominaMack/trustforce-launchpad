@@ -243,7 +243,7 @@ function Hero() {
             </Button>
           </div>
           <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm font-medium text-primary">
-            <span className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-gold" /> Greenville, MS</span>
+            <span className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-gold" /> Serving Clients Across Mississippi</span>
             <span className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-gold" /> Veteran-Friendly</span>
             <span className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-gold" /> Confidential & Ethical</span>
           </div>
