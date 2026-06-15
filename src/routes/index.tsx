@@ -472,7 +472,7 @@ function Resources() {
   return (
     <section id="resources" className="bg-secondary py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
-        <SectionHeading eyebrow="Resource Center" title="Guides & Resources" sub="Helpful resources for fiduciaries, families, and professionals. Coming soon." />
+        <SectionHeading eyebrow="Resource Center" title="Guides & Resources" sub="Helpful resources for fiduciaries, families, and professionals." />
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {resources.map(({ icon: Icon, title, text, href }) => (
             <Card key={title} className="group border-border bg-background transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-card)]">
@@ -485,14 +485,14 @@ function Resources() {
                 </div>
                 <h3 className="mt-5 font-serif text-lg font-semibold text-primary">{title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{text}</p>
-                <div className="mt-4 text-xs font-semibold uppercase tracking-wider text-gold">Coming Soon</div>
+                <div className="mt-4 text-xs font-semibold uppercase tracking-wider text-gold">Available Now</div>
                 <a
                   href={href}
                   target="_blank"
                   rel="noreferrer"
                   className="mt-5 inline-flex items-center gap-2 self-start text-sm font-semibold text-primary transition-colors hover:text-gold"
                 >
-                  View Guide Preview <ArrowRight className="h-4 w-4" />
+                  View Guide <ArrowRight className="h-4 w-4" />
                 </a>
               </CardContent>
             </Card>
