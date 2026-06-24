@@ -12,6 +12,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import {
+  Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle,
+} from "@/components/ui/dialog";
+import {
   Accordion, AccordionContent, AccordionItem, AccordionTrigger,
 } from "@/components/ui/accordion";
 import { toast } from "sonner";
@@ -147,11 +150,13 @@ const testimonials = [
 ];
 
 function Index() {
+  const [bookingOpen, setBookingOpen] = useState(false);
+
   return (
     <div className="min-h-dvh bg-background text-foreground">
-      <Header />
+      <Header onSchedule={() => setBookingOpen(true)} />
       <main>
-        <Hero />
+        <Hero onSchedule={() => setBookingOpen(true)} />
         <About />
         <Founder />
         <WhoWeHelp />
@@ -164,11 +169,12 @@ function Index() {
         <Contact />
       </main>
       <Footer />
+      <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
     </div>
   );
 }
 
-function Header() {
+function Header({ onSchedule }: { onSchedule: () => void }) {
   const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
@@ -192,7 +198,7 @@ function Header() {
             <Phone className="h-4 w-4 text-gold" /> (629) 258-7878
           </a>
           <Button asChild className="bg-primary text-primary-foreground hover:bg-primary-glow">
-            <a href={bookingUrl} target="_blank" rel="noopener noreferrer">Schedule</a>
+            <a href="#schedule-consultation" onClick={(event) => { event.preventDefault(); onSchedule(); }}>Schedule</a>
           </Button>
           <button
             className="lg:hidden p-2 text-primary"
@@ -220,7 +226,7 @@ function Header() {
   );
 }
 
-function Hero() {
+function Hero({ onSchedule }: { onSchedule: () => void }) {
   return (
     <section id="top" className="relative overflow-hidden">
       <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
@@ -238,10 +244,10 @@ function Hero() {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-gold/90 font-semibold">
-              <a href={bookingUrl} target="_blank" rel="noopener noreferrer">Schedule a Consultation <ArrowRight className="ml-1 h-4 w-4" /></a>
+              <a href="#schedule-consultation" onClick={(event) => { event.preventDefault(); onSchedule(); }}>Schedule a Consultation <ArrowRight className="ml-1 h-4 w-4" /></a>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-white/40 bg-white/90 text-primary hover:bg-white hover:text-primary">
-              <a href={bookingUrl} target="_blank" rel="noopener noreferrer">Explore Our Services</a>
+              <a href="#schedule-consultation" onClick={(event) => { event.preventDefault(); onSchedule(); }}>Request Information</a>
             </Button>
           </div>
           <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm font-medium text-primary">
@@ -262,6 +268,26 @@ function Hero() {
         </div>
       </div>
     </section>
+  );
+}
+
+function BookingDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) {
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-h-[92vh] max-w-5xl overflow-hidden p-0">
+        <DialogHeader className="border-b border-border px-6 py-4 text-left">
+          <DialogTitle className="font-serif text-2xl text-primary">Schedule a Consultation</DialogTitle>
+          <DialogDescription>
+            Choose a consultation time with TrustForce Advisors.
+          </DialogDescription>
+        </DialogHeader>
+        <iframe
+          src={bookingUrl}
+          title="Schedule a TrustForce Advisors consultation"
+          className="h-[75vh] w-full border-0"
+        />
+      </DialogContent>
+    </Dialog>
   );
 }
 

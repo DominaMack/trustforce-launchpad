@@ -4,7 +4,6 @@ import { join } from "node:path";
 const prerenderDir = ".vercel/output/static";
 const clientDir = "dist/client";
 const outputDir = "dist/cloudways";
-const bookingUrl = "https://links.thedominaagency.com/widget/booking/gSTyWDlqacwddKgnyzcg";
 
 for (const directory of [prerenderDir, clientDir]) {
   if (!existsSync(directory)) {
@@ -48,19 +47,17 @@ for (const htmlFile of findHtmlFiles(outputDir)) {
   }
 
   if (htmlFile === join(outputDir, "index.html")) {
-    writeFileSync(htmlFile, updateBookingCtas(html));
+    writeFileSync(htmlFile, updateStaticBookingCtas(html));
   }
 }
 
 console.log(`Cloudways static site prepared in ${outputDir}`);
 
-function updateBookingCtas(html) {
-  const bookingHref = `href="${bookingUrl}" target="_blank" rel="noopener noreferrer"`;
-
+function updateStaticBookingCtas(html) {
   return html
-    .replace(/href="#contact"(?= class="[^"]*bg-primary[^"]*">Schedule<\/a>)/, bookingHref)
-    .replace(/href="#contact"(?= class="[^"]*bg-gold[^"]*">Schedule a Consultation)/, bookingHref)
-    .replace(/href="#services"(?= class="[^"]*border-white\/40[^"]*">)/, bookingHref);
+    .replace(/href="#contact"(?= class="[^"]*bg-primary[^"]*">Schedule<\/a>)/, 'href="#schedule-consultation"')
+    .replace(/href="#contact"(?= class="[^"]*bg-gold[^"]*">Schedule a Consultation)/, 'href="#schedule-consultation"')
+    .replace(/href="#services"(?= class="[^"]*border-white\/40[^"]*">)/, 'href="#schedule-consultation"');
 }
 
 function findHtmlFiles(directory) {
