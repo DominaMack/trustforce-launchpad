@@ -17,9 +17,11 @@ mkdirSync(outputDir, { recursive: true });
 cpSync(prerenderDir, outputDir, { recursive: true });
 cpSync(clientDir, outputDir, { recursive: true });
 cpSync("cloudways/.htaccess", join(outputDir, ".htaccess"));
+cpSync("cloudways/index.php", join(outputDir, "index.php"));
 
 const requiredFiles = [
   "index.html",
+  "index.php",
   "privacy-policy/index.html",
   "terms-of-use/index.html",
   "accessibility/index.html",

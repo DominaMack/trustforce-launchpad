@@ -66,6 +66,8 @@ const nav = [
   { href: "#contact", label: "Contact" },
 ];
 
+const bookingUrl = "https://links.thedominaagency.com/widget/booking/gSTyWDlqacwddKgnyzcg";
+
 const whoWeHelp = [
   { icon: Users, title: "Families", text: "Support for families managing difficult transitions involving aging parents, disability, illness, estate matters, or fiduciary responsibilities." },
   { icon: Shield, title: "Trustees", text: "Support for trustees managing trust documents, beneficiary communication, distributions, and recordkeeping." },
@@ -190,7 +192,7 @@ function Header() {
             <Phone className="h-4 w-4 text-gold" /> (629) 258-7878
           </a>
           <Button asChild className="bg-primary text-primary-foreground hover:bg-primary-glow">
-            <a href="#contact">Schedule</a>
+            <a href={bookingUrl} target="_blank" rel="noopener noreferrer">Schedule</a>
           </Button>
           <button
             className="lg:hidden p-2 text-primary"
@@ -236,10 +238,10 @@ function Hero() {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-gold/90 font-semibold">
-              <a href="#contact">Schedule a Consultation <ArrowRight className="ml-1 h-4 w-4" /></a>
+              <a href={bookingUrl} target="_blank" rel="noopener noreferrer">Schedule a Consultation <ArrowRight className="ml-1 h-4 w-4" /></a>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-white/40 bg-white/90 text-primary hover:bg-white hover:text-primary">
-              <a href="#services">Explore Our Services</a>
+              <a href={bookingUrl} target="_blank" rel="noopener noreferrer">Explore Our Services</a>
             </Button>
           </div>
           <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm font-medium text-primary">
