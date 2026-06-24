@@ -1,9 +1,10 @@
-import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const prerenderDir = ".vercel/output/static";
 const clientDir = "dist/client";
 const outputDir = "dist/cloudways";
+const bookingUrl = "https://links.thedominaagency.com/widget/booking/gSTyWDlqacwddKgnyzcg";
 
 for (const directory of [prerenderDir, clientDir]) {
   if (!existsSync(directory)) {
@@ -45,9 +46,22 @@ for (const htmlFile of findHtmlFiles(outputDir)) {
       throw new Error(`Missing asset ${match[1]} referenced by ${htmlFile}`);
     }
   }
+
+  if (htmlFile === join(outputDir, "index.html")) {
+    writeFileSync(htmlFile, updateBookingCtas(html));
+  }
 }
 
 console.log(`Cloudways static site prepared in ${outputDir}`);
+
+function updateBookingCtas(html) {
+  const bookingHref = `href="${bookingUrl}" target="_blank" rel="noopener noreferrer"`;
+
+  return html
+    .replace(/href="#contact"(?= class="[^"]*bg-primary[^"]*">Schedule<\/a>)/, bookingHref)
+    .replace(/href="#contact"(?= class="[^"]*bg-gold[^"]*">Schedule a Consultation)/, bookingHref)
+    .replace(/href="#services"(?= class="[^"]*border-white\/40[^"]*">)/, bookingHref);
+}
 
 function findHtmlFiles(directory) {
   const files = [];
